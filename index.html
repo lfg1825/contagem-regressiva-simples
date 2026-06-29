@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva para a Prova</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main-content">
+        <h1 id="countdownMainTitle" class="countdown-main-title">Contagem Regressiva para a Prova</h1>
+        <p id="countdownSubtitle" class="countdown-subtitle"></p>
+
+        <div id="countdownDisplay" class="countdown-display">
+            <div class="time-segment" id="days">00<span>Dias</span></div>
+            <div class="time-segment" id="hours">00<span>Horas</span></div>
+            <div class="time-segment" id="minutes">00<span>Minutos</span></div>
+            <div class="time-segment" id="seconds">00<span>Segundos</span></div>
+        </div>
+
+        <div id="infoMessage" class="info-message hidden">
+        </div>
+
+        <div class="control-buttons">
+            <button id="settingsButton" class="button">Mudar Configurações</button>
+            <button id="resetButton" class="button">Resetar Contagem</button>
+            <button id="themeToggleButton" class="button">Modo Claro</button>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Configurar Contagem Regressiva</h2>
+
+            <div class="form-group">
+                <label for="countdownNameInput">Nome da Contagem Regressiva</label>
+                <input type="text" id="countdownNameInput" placeholder="Ex: Prova de Matemática">
+            </div>
+
+            <div class="form-group">
+                <label for="targetDateInput">Data Alvo</label>
+                <input type="date" id="targetDateInput">
+            </div>
+
+            <div class="form-group">
+                <label for="targetTimeInput">Hora Alvo</label>
+                <input type="time" id="targetTimeInput">
+            </div>
+
+            <div class="modal-actions">
+                <button id="saveButton" class="button save-button">Salvar</button>
+                <button id="closeModalButton" class="button close-button">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

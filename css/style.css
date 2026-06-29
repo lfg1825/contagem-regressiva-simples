@@ -1,0 +1,321 @@
+:root {
+    --font-family: 'Ubuntu', sans-serif;
+    --bg-body: #0a0a0a;
+    --color-text: #ffffff;
+    --bg-segment: #1a1a1a;
+    --color-segment-label: #cccccc;
+    --bg-modal: #1a1a1a;
+    --color-modal-text: #ffffff;
+    --border-input: #333333;
+    --bg-input: #0a0a0a;
+    --color-input-text: #ffffff;
+    --color-info-bg: #222222;
+    --color-info-text: #e2e8f0;
+    --color-button-default-bg: #333333;
+    --color-button-default-hover-bg: #555555;
+    --color-button-save-bg: #007bff;
+    --color-button-save-hover-bg: #0056b3;
+    --color-button-close-bg: #dc3545;
+    --color-button-close-hover-bg: #c82333;
+    --color-button-primary-text: #ffffff;
+    --color-button-secondary-text: #ffffff;
+}
+
+body.light-mode {
+    --bg-body: #f0f2f5;
+    --color-text: #333333;
+    --bg-segment: #ffffff;
+    --color-segment-label: #666666;
+    --bg-modal: #ffffff;
+    --color-modal-text: #333333;
+    --border-input: #cccccc;
+    --bg-input: #f9f9f9;
+    --color-input-text: #333333;
+    --color-info-bg: #e0f2f7;
+    --color-info-text: #0056b3;
+    --color-button-default-bg: #e0e0e0;
+    --color-button-default-hover-bg: #c0c0c0;
+    --color-button-save-bg: #007bff;
+    --color-button-save-hover-bg: #0056b3;
+    --color-button-close-bg: #dc3545;
+    --color-button-close-hover-bg: #c82333;
+    --color-button-primary-text: #ffffff;
+    --color-button-secondary-text: #333333;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-body);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.countdown-main-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.countdown-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-segment-label);
+    margin-bottom: 3rem;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.time-segment {
+    background-color: var(--bg-segment);
+    border-radius: 0.75rem;
+    padding: 1.8rem 2.5rem;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+    min-width: 130px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.4), 0 5px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.time-segment span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-top: 0.8rem;
+    color: var(--color-segment-label);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--bg-modal);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+    color: var(--color-modal-text);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--color-modal-text);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--color-segment-label);
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-input);
+    border-radius: 0.5rem;
+    background-color: var(--bg-input);
+    color: var(--color-input-text);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+    outline: none;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.control-buttons {
+    margin: 3rem auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.button {
+    background-color: var(--color-button-default-bg);
+    color: var(--color-button-primary-text);
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: none;
+    outline: none;
+    flex: 1;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--color-button-default-hover-bg);
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.save-button {
+    background-color: var(--color-button-save-bg);
+}
+
+.save-button:hover {
+    background-color: var(--color-button-save-hover-bg);
+}
+
+.close-button {
+    background-color: var(--color-button-close-bg);
+}
+
+.close-button:hover {
+    background-color: var(--color-button-close-hover-bg);
+}
+
+.info-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info-text);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .countdown-main-title {
+        font-size: 2.2rem;
+    }
+    .countdown-subtitle {
+        font-size: 1rem;
+    }
+    .time-segment {
+        font-size: 2.8rem;
+        padding: 1.5rem 2rem;
+        min-width: 100px;
+    }
+    .time-segment span {
+        font-size: 0.8rem;
+    }
+    .countdown-display {
+        gap: 1rem;
+    }
+    .modal-content {
+        padding: 2rem;
+    }
+    .modal-content h2 {
+        font-size: 1.8rem;
+    }
+    .control-buttons {
+        flex-direction: column;
+        max-width: 300px;
+    }
+    .button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-main-title {
+        font-size: 1.8rem;
+    }
+    .countdown-subtitle {
+        font-size: 0.9rem;
+    }
+    .time-segment {
+        font-size: 2rem;
+        padding: 1rem 1.5rem;
+        min-width: 80px;
+    }
+    .time-segment span {
+        font-size: 0.7rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+}
